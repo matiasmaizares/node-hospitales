@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>OAuth2 Google Signin</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap"
+			rel="stylesheet"
+		/>
+		<style>
+			* {
+				font-family: "Lato";
+			}
+			.container {
+				width: 80%;
+				margin: auto;
+				text-align: center;
+			}
+			.g_id_signin {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Google Signin</h1>
+			<div
+				id="g_id_onload"
+				data-client_id="703833158408-cls9llf4ehpo8gl141mi7glcg9dfs18u.apps.googleusercontent.com"
+				data-context="use"
+				data-ux_mode="popup"
+				data-login_uri="http://localhost:3000"
+				data-nonce=""
+				data-auto_select="true"
+				data-callback="handleCredentialResponse"
+			></div>
+
+			<div
+				class="g_id_signin"
+				data-type="standard"
+				data-shape="pill"
+				data-theme="filled_blue"
+				data-text="$ {button.text}"
+				data-size="large"
+				data-logo_alignment="left"
+			></div>
+		</div>
+
+		<script src="https://accounts.google.com/gsi/client" async defer></script>
+		<script>
+			function handleCredentialResponse(response) {
+				console.info("entry");
+				// decodeJwtResponse() is a custom function defined by you
+				// to decode the credential response.
+				console.info("Token JWT", response.credential);
+				// const responsePayload = decodeJwtResponse(response.credential);
+				// console.log("ID: " + responsePayload.sub);
+				// console.log('Full Name: ' + responsePayload.name);
+				// console.log('Given Name: ' + responsePayload.given_name);
+				// console.log('Family Name: ' + responsePayload.family_name);
+				// console.log("Image URL: " + responsePayload.picture);
+				// console.log("Email: " + responsePayload.email);
+			}
+		</script>
+	</body>
+</html>
